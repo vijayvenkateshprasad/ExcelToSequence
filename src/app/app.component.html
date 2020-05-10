@@ -1,0 +1,9 @@
+<ng-container *ngFor="let item of byPages">
+  <div class="">
+    sequenceDiagram;
+    <ng-container *ngFor="let innerItem of item;let first = first">      
+      {{innerItem.UI}} -> {{innerItem.FrntEndAPISystem}}:{{innerItem.FrntEndAPI + innerItem.FrntEndAPIResource}};
+      {{innerItem.FrntEndAPISystem}}-->> {{innerItem.TechSystem}}:{{innerItem.TechAPI + innerItem.TechResource}};
+    </ng-container>
+  </div>
+</ng-container>

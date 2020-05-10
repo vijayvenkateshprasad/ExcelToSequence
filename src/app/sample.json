@@ -1,0 +1,70 @@
+{
+    "Sheet1": [
+        {
+            "Journey": "Covai",
+            "Pages": "One",
+            "UI": "Portal",
+            "FrntEndAPI": "Blue",
+            "FrntEndAPIResource": "Patch",
+            "FrntEndAPISystem": "BW",
+            "TechAPI": "Blue",
+            "TechResource": "Patch",
+            "TechSystem": "AB"
+        },
+        {
+            "Journey": "Covai",
+            "Pages": "One",
+            "UI": "Portal",
+            "FrntEndAPI": "Green",
+            "FrntEndAPIResource": "Get",
+            "FrntEndAPISystem": "BW",
+            "TechAPI": "Green",
+            "TechResource": "Get",
+            "TechSystem": "AB"
+        },
+        {
+            "Journey": "Covai",
+            "Pages": "Two",
+            "UI": "Portal",
+            "FrntEndAPI": "Blue",
+            "FrntEndAPIResource": "Get",
+            "FrntEndAPISystem": "BW",
+            "TechAPI": "Blue",
+            "TechResource": "Get",
+            "TechSystem": "AB"
+        },
+        {
+            "Journey": "Salem",
+            "Pages": "One",
+            "UI": "Portal",
+            "FrntEndAPI": "Blue",
+            "FrntEndAPIResource": "Patch",
+            "FrntEndAPISystem": "BW",
+            "TechAPI": "Blue",
+            "TechResource": "Patch",
+            "TechSystem": "AB"
+        },
+        {
+            "Journey": "Salem",
+            "Pages": "Two",
+            "UI": "Portal",
+            "FrntEndAPI": "Green",
+            "FrntEndAPIResource": "Get",
+            "FrntEndAPISystem": "BW",
+            "TechAPI": "Green",
+            "TechResource": "Get",
+            "TechSystem": "AB"
+        },
+        {
+            "Journey": "Salem",
+            "Pages": "Two",
+            "UI": "Portal",
+            "FrntEndAPI": "Blue",
+            "FrntEndAPIResource": "Get",
+            "FrntEndAPISystem": "BW",
+            "TechAPI": "Blue",
+            "TechResource": "Get",
+            "TechSystem": "AB"
+        }
+    ]
+}
