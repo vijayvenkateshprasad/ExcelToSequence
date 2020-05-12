@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, AfterViewInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -8,92 +8,34 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AppComponent {
   title = 'mermaid-sample';
-  items = [
-    {
-      "Journey": "Covai",
-      "Pages": "One",
-      "UI": "Portal",
-      "FrntEndAPI": "Blue",
-      "FrntEndAPIResource": "Patch",
-      "FrntEndAPISystem": "BW",
-      "TechAPI": "Blue",
-      "TechResource": "Patch",
-      "TechSystem": "AB"
-    },
-    {
-      "Journey": "Covai",
-      "Pages": "One",
-      "UI": "Portal",
-      "FrntEndAPI": "Green",
-      "FrntEndAPIResource": "Get",
-      "FrntEndAPISystem": "BW",
-      "TechAPI": "Green",
-      "TechResource": "Get",
-      "TechSystem": "AB"
-    },
-    {
-      "Journey": "Covai",
-      "Pages": "Two",
-      "UI": "Portal",
-      "FrntEndAPI": "Blue",
-      "FrntEndAPIResource": "Get",
-      "FrntEndAPISystem": "BW",
-      "TechAPI": "Blue",
-      "TechResource": "Get",
-      "TechSystem": "AB"
-    },
-    {
-      "Journey": "Salem",
-      "Pages": "One",
-      "UI": "Portal",
-      "FrntEndAPI": "Blue",
-      "FrntEndAPIResource": "Patch",
-      "FrntEndAPISystem": "BW",
-      "TechAPI": "Blue",
-      "TechResource": "Patch",
-      "TechSystem": "AB"
-    },
-    {
-      "Journey": "Salem",
-      "Pages": "Two",
-      "UI": "Portal",
-      "FrntEndAPI": "Green",
-      "FrntEndAPIResource": "Get",
-      "FrntEndAPISystem": "BW",
-      "TechAPI": "Green",
-      "TechResource": "Get",
-      "TechSystem": "AB"
-    },
-    {
-      "Journey": "Salem",
-      "Pages": "Two",
-      "UI": "Portal",
-      "FrntEndAPI": "Blue",
-      "FrntEndAPIResource": "Get",
-      "FrntEndAPISystem": "BW",
-      "TechAPI": "Blue",
-      "TechResource": "Get",
-      "TechSystem": "AB"
-    }
-  ];
+  items = [];
 
   byPages = [];
 
   constructor(private http: HttpClient) {
+    this.http.get("app/sample.json").subscribe((x: any) => {
+      this.items = x.Sheet1; 
+      this.processDataByPages();
+    });
+  }
+
+  private processDataByPages() {
     const a = this.groupBy(this.items.filter(x => x.Journey != "Journey"), 'Journey');
     const b = [];
     for (const key in a) {
       if (a.hasOwnProperty(key)) {
         b.push(a[key]);
-
       }
     }
-    const bb = this.groupBy(b[0], 'Pages');
-    for (const key in bb) {
-      if (bb.hasOwnProperty(key)) {
-        this.byPages.push(bb[key]);
+    
+    b.forEach(i => {
+      let bb = this.groupBy(i, 'Pages');
+      for (const key in bb) {
+        if (bb.hasOwnProperty(key)) {
+          this.byPages.push(bb[key]);
+        }
       }
-    }
+    });
   }
 
   groupBy(data, property) {
@@ -105,5 +47,12 @@ export class AppComponent {
       acc[key].push(obj);
       return acc;
     }, {});
+  }
+
+  formDescription(items: any[]): string {
+    let response = '';
+    items.forEach(item => response = response + `${item.UI} -> ${item.FrntEndAPISystem}:${item.FrntEndAPI}${item.FrntEndAPIResource};
+    ${item.FrntEndAPISystem}-->> ${item.TechSystem}:${item.TechAPI}${item.TechResource}`);
+    return response;
   }
 }

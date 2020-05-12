@@ -1,9 +1,7 @@
 <ng-container *ngFor="let item of byPages">
-  <div class="">
+  {{item[0].Journey}}
+  <div class="mermaid">
     sequenceDiagram;
-    <ng-container *ngFor="let innerItem of item;let first = first">      
-      {{innerItem.UI}} -> {{innerItem.FrntEndAPISystem}}:{{innerItem.FrntEndAPI + innerItem.FrntEndAPIResource}};
-      {{innerItem.FrntEndAPISystem}}-->> {{innerItem.TechSystem}}:{{innerItem.TechAPI + innerItem.TechResource}};
-    </ng-container>
+    {{formDescription(item)}}
   </div>
 </ng-container>
